@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Lumen — Falling Notes Piano</title>
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="aurora">
+
+  <svg class="svg-sprite" aria-hidden="true" width="0" height="0">
+    <defs>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8.2 5.4v13.2c0 .9 1 1.5 1.8 1L20 13c.8-.5.8-1.6 0-2.1L10 4.4c-.8-.5-1.8.1-1.8 1Z" fill="currentColor"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6.5" y="4.8" width="3.8" height="14.4" rx="1.6" fill="currentColor"/><rect x="13.7" y="4.8" width="3.8" height="14.4" rx="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-loop" viewBox="0 0 24 24"><path d="M17.2 4.5 20.4 7.7l-3.2 3.2M6.8 19.5 3.6 16.3l3.2-3.2M20 7.7H8.3a4.7 4.7 0 0 0-4.7 4.7v.4M4 16.3h11.7a4.7 4.7 0 0 0 4.7-4.7v-.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.3v5.4h3.3l4.2 3.5V5.8L7.3 9.3H4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 8.2a5.3 5.3 0 0 1 0 7.6M17.8 5.4a9.2 9.2 0 0 1 0 13.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.3v5.4h3.3l4.2 3.5V5.8L7.3 9.3H4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m15.5 9.5 4.5 5M20 9.5l-4.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M4 12h3M11 12h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="15" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+      <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-contract" viewBox="0 0 24 24"><path d="M4 9h5V4M20 9h-5V4M4 15h5v5M20 15h-5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v4.2c0 .4.3.8.8.8h12.4c.5 0 .8-.4.8-.8V15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7.5 9.5 4.5 4.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11m0-11-11 11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+      <symbol id="i-pedal" viewBox="0 0 24 24"><path d="M5.5 18.5h13M7.5 15.8V9.5A4.5 4.5 0 0 1 12 5a4.5 4.5 0 0 1 4.5 4.5v6.3M12 5V2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.8c.5 5.3 3.9 8.7 9.2 9.2-5.3.5-8.7 3.9-9.2 9.2-.5-5.3-3.9-8.7-9.2-9.2 5.3-.5 8.7-3.9 9.2-9.2Z" fill="currentColor"/></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18.2V6.6l10-2v11.6M9 18.2a2.7 2.7 0 1 1-2.7-2.7c1 0 1.9.5 2.4 1.2M19 16.2a2.7 2.7 0 1 1-2.7-2.7c1 0 1.9.5 2.4 1.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-practice" viewBox="0 0 24 24"><path d="M8.5 3.2h7L19 20.8H5L8.5 3.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 17.2 15.4 8M9.8 15.4h4.4M8.8 20.8h6.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__orb ambient__orb--one"></div>
+    <div class="ambient__orb ambient__orb--two"></div>
+    <div class="ambient__orb ambient__orb--three"></div>
+    <div class="ambient__grain"></div>
+    <div class="ambient__vignette"></div>
+  </div>
+
+  <div class="app" id="app">
+    <header class="topbar">
+      <a class="brand" href="visualizer.html" aria-label="Lumen Piano home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 44 44">
+            <defs>
+              <linearGradient id="brandGrad" x1="5" y1="4" x2="39" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#d8fdff"/>
+                <stop offset=".48" stop-color="#7ee7ff"/>
+                <stop offset="1" stop-color="#b48cff"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="40" height="40" rx="12.5" fill="url(#brandGrad)"/>
+            <path d="M12.5 12.5v17h6.3v-17M19.9 12.5v17h6.3v-17M27.3 12.5v17h4.2" fill="none" stroke="#07101d" stroke-width="2.5" stroke-linecap="round" opacity=".82"/>
+            <path d="M31.2 11.2c.3 2.5 1.8 4 4.3 4.3-2.5.3-4 1.8-4.3 4.3-.3-2.5-1.8-4-4.3-4.3 2.5-.3 4-1.8 4.3-4.3Z" fill="#fff" opacity=".94"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>Lumen</strong>
+          <span>falling notes piano</span>
+        </span>
+      </a>
+
+      <div class="topbar__actions">
+        <button class="btn btn--ghost" id="loadMidiBtn" type="button" title="Load a MIDI file">
+          <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>
+          <span>Load MIDI</span>
+        </button>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <button class="icon-btn" id="settingsBtn" type="button" aria-label="Open visuals and sound settings" aria-controls="settingsPanel" aria-expanded="false">
+          <svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg>
+        </button>
+        <button class="icon-btn" id="fullscreenBtn" type="button" aria-label="Enter full screen">
+          <svg class="icon icon--expand" aria-hidden="true"><use href="#i-expand"/></svg>
+          <svg class="icon icon--contract" aria-hidden="true"><use href="#i-contract"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="instrument">
+      <section class="stage" id="stage" aria-label="Falling notes visualizer">
+        <canvas class="visualizer-base" id="visualizerBase" aria-hidden="true"></canvas>
+        <canvas id="visualizer" aria-hidden="true"></canvas>
+        <div class="stage__wash" aria-hidden="true"></div>
+
+        <div class="stage__meta">
+          <div class="kicker">
+            <span class="kicker__dot" id="statusDot"></span>
+            <span id="statusLabel">Ready when you are</span>
+          </div>
+          <h2 id="songTitle">Rêverie</h2>
+          <p id="songSubtitle">Original · Lumen Sessions</p>
+        </div>
+
+        <div class="stage__readouts">
+          <div class="readout">
+            <span>Notes</span>
+            <strong id="noteCount">—</strong>
+          </div>
+          <div class="readout">
+            <span>Range</span>
+            <strong id="rangeReadout">C2–C7</strong>
+          </div>
+        </div>
+
+        <div class="hitline" aria-hidden="true"><span></span></div>
+
+        <div class="stage__invite" id="stageInvite">
+          <span class="stage__invite-icon"><svg aria-hidden="true"><use href="#i-spark"/></svg></span>
+          <span>Press <kbd>Play</kbd> or use your keyboard</span>
+        </div>
+      </section>
+
+      <section class="keyboard-section" aria-label="Playable piano keyboard">
+        <div class="keyboard-frame">
+          <div class="keyboard" id="keyboard" role="group" aria-label="Piano keys. Play with Q through slash and the number and home rows. Use square brackets to change octave."></div>
+          <div class="hands-layer" id="handsLayer" aria-hidden="true"></div>
+          <div class="keyboard__sheen" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="transport" aria-label="Playback controls">
+        <div class="transport__left">
+          <button class="play-btn" id="playBtn" type="button" aria-label="Play song">
+            <svg class="icon icon--play" aria-hidden="true"><use href="#i-play"/></svg>
+            <svg class="icon icon--pause" aria-hidden="true"><use href="#i-pause"/></svg>
+          </button>
+          <button class="training-btn" id="trainingBtn" type="button" aria-label="Training mode: play along without the song audio" aria-pressed="false" title="Training mode: notes fall silently so you can play along">
+            <svg class="icon" aria-hidden="true"><use href="#i-practice"/></svg>
+            <span>Training</span>
+          </button>
+          <label class="song-picker">
+            <svg class="song-picker__music" aria-hidden="true"><use href="#i-music"/></svg>
+            <select id="songSelect" aria-label="Choose a song"></select>
+            <svg class="song-picker__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </label>
+        </div>
+
+        <div class="transport__timeline">
+          <span class="timecode" id="currentTime">0:00</span>
+          <input class="timeline" id="timeline" type="range" min="0" max="1000" value="0" step="1" aria-label="Song position">
+          <span class="timecode" id="totalTime">0:00</span>
+        </div>
+
+        <div class="transport__right">
+          <button class="pedal-btn" id="sustainBtn" type="button" aria-label="Toggle sustain" aria-pressed="false" title="Sustain (hold Space)">
+            <svg class="icon" aria-hidden="true"><use href="#i-pedal"/></svg>
+            <span>Sustain</span>
+          </button>
+          <button class="icon-btn icon-btn--small" id="loopBtn" type="button" aria-label="Loop song" aria-pressed="false" title="Loop">
+            <svg class="icon" aria-hidden="true"><use href="#i-loop"/></svg>
+          </button>
+          <div class="volume-control">
+            <button class="icon-btn icon-btn--small" id="muteBtn" type="button" aria-label="Mute" aria-pressed="false">
+              <svg class="icon icon--volume" aria-hidden="true"><use href="#i-volume"/></svg>
+              <svg class="icon icon--mute" aria-hidden="true"><use href="#i-mute"/></svg>
+            </button>
+            <input class="volume-range" id="volumeRange" type="range" min="0" max="100" value="78" step="1" aria-label="Volume">
+          </div>
+        </div>
+      </section>
+
+      <footer class="hintbar">
+        <div class="hintbar__keys">
+          <span class="hint"><kbd>Q</kbd><span>–</span><kbd>/</kbd> play</span>
+          <span class="hint"><kbd>[</kbd><kbd>]</kbd> octave</span>
+          <span class="hint"><kbd>Space</kbd> sustain</span>
+        </div>
+        <div class="octave-control">
+          <span>Keyboard</span>
+          <button class="octave-btn" id="octaveDown" type="button" aria-label="Lower keyboard octave">−</button>
+          <strong id="octaveLabel">C3</strong>
+          <button class="octave-btn" id="octaveUp" type="button" aria-label="Raise keyboard octave">+</button>
+        </div>
+        <p class="hintbar__tip">Play along, or import any MIDI to watch it fall.</p>
+      </footer>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+  <aside class="settings" id="settingsPanel" aria-label="Visuals and sound settings" aria-hidden="true">
+    <div class="settings__head">
+      <div>
+        <span class="settings__eyebrow">Make it yours</span>
+        <h3>Visuals &amp; sound</h3>
+      </div>
+      <button class="icon-btn" id="closeSettingsBtn" type="button" aria-label="Close settings">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <div class="settings__body">
+      <fieldset class="settings-group">
+        <legend>Theme</legend>
+        <div class="theme-grid" id="themeGrid">
+          <button class="theme-swatch is-selected" type="button" data-theme-choice="aurora" aria-pressed="true">
+            <span class="theme-swatch__preview theme-swatch__preview--aurora"><i></i><i></i><i></i></span>
+            <span>Aurora</span>
+          </button>
+          <button class="theme-swatch" type="button" data-theme-choice="ember" aria-pressed="false">
+            <span class="theme-swatch__preview theme-swatch__preview--ember"><i></i><i></i><i></i></span>
+            <span>Ember</span>
+          </button>
+          <button class="theme-swatch" type="button" data-theme-choice="tide" aria-pressed="false">
+            <span class="theme-swatch__preview theme-swatch__preview--tide"><i></i><i></i><i></i></span>
+            <span>Tide</span>
+          </button>
+          <button class="theme-swatch" type="button" data-theme-choice="mono" aria-pressed="false">
+            <span class="theme-swatch__preview theme-swatch__preview--mono"><i></i><i></i><i></i></span>
+            <span>Mono</span>
+          </button>
+        </div>
+      </fieldset>
+
+      <fieldset class="settings-group">
+        <legend>Feel</legend>
+        <label class="slider-row" for="speedRange">
+          <span>Fall speed</span>
+          <output id="speedOutput" for="speedRange">1.0×</output>
+          <input id="speedRange" type="range" min="50" max="170" value="100" step="5">
+        </label>
+        <label class="slider-row" for="glowRange">
+          <span>Glow</span>
+          <output id="glowOutput" for="glowRange">75%</output>
+          <input id="glowRange" type="range" min="0" max="100" value="75" step="1">
+        </label>
+        <label class="slider-row" for="volumeRangeSettings">
+          <span>Volume</span>
+          <output id="volumeOutput" for="volumeRangeSettings">78%</output>
+          <input id="volumeRangeSettings" type="range" min="0" max="100" value="78" step="1">
+        </label>
+      </fieldset>
+
+      <fieldset class="settings-group">
+        <legend>Layers</legend>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Falling notes</strong><small>Glowing tiles and note labels</small></span>
+          <input id="toggleTiles" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Spark particles</strong><small>Bursts when notes meet the keys</small></span>
+          <input id="toggleParticles" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Guide hands</strong><small>Translucent hands follow the notes</small></span>
+          <input id="toggleHands" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Key hints</strong><small>Computer-key letters on the keys</small></span>
+          <input id="toggleKeyHints" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Note names</strong><small>Show C names on the keyboard</small></span>
+          <input id="toggleNoteNames" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+        <label class="toggle-row">
+          <span class="toggle-row__copy"><strong>Ambient motion</strong><small>Slowly drifting background light</small></span>
+          <input id="toggleAmbient" type="checkbox" checked>
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+      </fieldset>
+
+      <button class="btn btn--soft settings__reset" id="resetSettingsBtn" type="button">Reset to defaults</button>
+      <p class="settings__note">MIDI files are read locally. Nothing leaves your computer.</p>
+      <p class="settings__version">Lumen 1.1.0 · for Firefox</p>
+    </div>
+  </aside>
+
+  <div class="dropzone" id="dropzone" aria-hidden="true">
+    <div class="dropzone__inner">
+      <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>
+      <strong>Drop a MIDI file</strong>
+      <span>It will fall right here</span>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <input id="midiFileInput" type="file" accept=".mid,.midi,audio/midi,audio/x-midi" hidden>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

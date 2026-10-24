@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Lumen Piano">
+  <defs>
+    <linearGradient id="lumenTile" x1="17" y1="12" x2="113" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d8fdff"/>
+      <stop offset=".48" stop-color="#7ee7ff"/>
+      <stop offset="1" stop-color="#b48cff"/>
+    </linearGradient>
+    <linearGradient id="lumenShine" x1="24" y1="18" x2="90" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity=".38"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="124" height="124" rx="30" fill="url(#lumenTile)"/>
+  <rect x="3.5" y="3.5" width="121" height="121" rx="28.5" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.5"/>
+  <path d="M33 35.5h15v60H33zM52.5 35.5h15v60h-15zM72 35.5h15v60H72zM91.5 35.5h10v46h-10z" fill="#07101d" opacity=".86"/>
+  <rect x="33" y="88" width="68.5" height="7.5" rx="3" fill="#07101d" opacity=".68"/>
+  <path d="M97.3 18.1c.8 6.6 4.8 10.6 11.4 11.4-6.6.8-10.6 4.8-11.4 11.4-.8-6.6-4.8-10.6-11.4-11.4 6.6-.8 10.6-4.8 11.4-11.4Z" fill="#fff" opacity=".94"/>
+  <rect x="2" y="2" width="124" height="124" rx="30" fill="url(#lumenShine)" opacity=".32"/>
+</svg>
