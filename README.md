@@ -165,3 +165,4 @@ For local testing, choose the resulting `.xpi` or `manifest.json` from `about:de
 - **Gymnopédie** — after Erik Satie, public domain.
 - All other code and arrangements are released under the MIT License; see `LICENSE`.
 # Lumen
+# Lumen
